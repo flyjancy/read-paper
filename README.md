@@ -2,8 +2,8 @@
 
 # Read Paper
 
-**深度阅读、分析与对比 PDF/DOCX 论文，并生成中文工程化总结的 Codex skill**<br>
-**A Codex skill for deep analysis and comparison of PDF/DOCX papers with Chinese engineering summaries**
+**深度阅读、分析与对比 PDF/DOCX 论文，并生成中文工程化总结的 Pi skill**<br>
+**A Pi skill for deep analysis and comparison of PDF/DOCX papers with Chinese engineering summaries**
 
 <p>
   <a href="#中文">中文</a> · <a href="#english">English</a>
@@ -34,23 +34,25 @@ Read Paper 用于深度阅读单篇论文或对比多篇论文与技术文档。
 
 ### 快速开始
 
-克隆到 Codex skills 目录：
+克隆到 Pi skills 目录：
 
 ```bash
-git clone https://github.com/flyjancy/read-paper.git ~/.codex/skills/read-paper
+git clone https://github.com/flyjancy/read-paper.git ~/.pi/agent/skills/read-paper
 ```
 
 分析单篇 PDF 或 DOCX：
 
 ```text
-/read-paper <pdf或docx路径>
+/skill:read-paper <pdf或docx路径>
 ```
 
 对比多篇文档：
 
 ```text
-/compare-papers <路径1> <路径2> ...
+/skill:read-paper 对比 <路径1> <路径2> ...
 ```
+
+本 skill 遵循 Agent Skills 标准，Codex 等其他 harness 克隆到各自的 skills 目录也可以使用同一份文件。
 
 ### 输出
 
@@ -96,23 +98,25 @@ The skill supports PDF and DOCX input and writes all reports in Chinese. Informa
 
 ### Quick Start
 
-Clone the skill into your Codex skills directory:
+Clone the skill into your Pi skills directory:
 
 ```bash
-git clone https://github.com/flyjancy/read-paper.git ~/.codex/skills/read-paper
+git clone https://github.com/flyjancy/read-paper.git ~/.pi/agent/skills/read-paper
 ```
 
 Analyze one PDF or DOCX file:
 
 ```text
-/read-paper <path-to-pdf-or-docx>
+/skill:read-paper <path-to-pdf-or-docx>
 ```
 
 Compare multiple documents:
 
 ```text
-/compare-papers <path-1> <path-2> ...
+/skill:read-paper 对比 <path-1> <path-2> ...
 ```
+
+The skill follows the Agent Skills standard, so other harnesses (including Codex) can use the same files by cloning into their own skills directory.
 
 ### Output
 

@@ -1,6 +1,6 @@
 ---
 name: read-paper
-description: "Read, deeply analyze, and compare academic papers or technical documents in PDF or DOCX format. Use for /read-paper and /compare-papers requests. Produces structured Chinese Markdown reports plus an engineering summary covering bottlenecks, architecture or training methods, and implications for chip architecture, RTL, and verification; single-document analysis also renames the source and saves the report by title."
+description: "Read, deeply analyze, and compare academic papers or technical documents in PDF or DOCX format. In Pi, invoke via /skill:read-paper <path> for a single document, or /skill:read-paper 对比 <path1> <path2> ... to compare multiple documents. Produces structured Chinese Markdown reports plus an engineering summary covering bottlenecks, architecture or training methods, and implications for chip architecture, RTL, and verification; single-document analysis also renames the source and saves the report by title."
 ---
 
 # Read Paper
@@ -19,11 +19,11 @@ description: "Read, deeply analyze, and compare academic papers or technical doc
 
 ## 命令
 
-### /read-paper `<pdf或docx路径>`
+### 单篇分析：`/skill:read-paper <pdf或docx路径>`
 
 深度分析单篇论文。读取 [references/deep-analysis.md](references/deep-analysis.md) 获取输出模板、阅读流程和文件命名规则。
 
-### /compare-papers `<pdf或docx路径1>` `<pdf或docx路径2>` ...
+### 多篇对比：`/skill:read-paper 对比 <pdf或docx路径1> <pdf或docx路径2> ...`
 
 对比分析多篇论文。读取 [references/compare-papers.md](references/compare-papers.md) 获取输出模板和对比流程。
 
@@ -64,6 +64,6 @@ PDF 每批最多读取 20 页；DOCX 按标题或章节分批读取。
 - 每篇论文或文档必须在完整分析、局限性和个人点评之后追加三个问题，顺序固定为“瓶颈 → 结构或训练方法 → 芯片架构/RTL/验证启发”
 - 三问总结应引用原分析中的实验数字、消融结果和作者局限，并说明它们是论文证据还是分析推断
 - 第三个问题必须明确区分芯片架构、RTL 和验证三个层次；论文没有直接覆盖的层次应标注推断边界
-- `/read-paper` 按单篇分析模板将完整报告写入原文所在目录，并在对话中返回重命名后的原文路径和报告路径
-- `/compare-papers` 直接输出到对话中
+- 单篇分析模式按单篇分析模板将完整报告写入原文所在目录，并在对话中返回重命名后的原文路径和报告路径
+- 多篇对比模式直接输出到对话中
 - 保持客观，避免把未经论文支持的硬件结论写成事实
