@@ -17,7 +17,7 @@
 
 ## 中文
 
-Read Paper 用于深度阅读单篇论文或对比多篇论文与技术文档。它覆盖问题定义、核心方法、实验结果、局限性与个人点评，并从芯片架构、RTL 和验证三个层面补充工程化分析。
+Read Paper 用于深度阅读单篇论文或对比多篇论文与技术文档。它覆盖问题定义、核心方法、实验结果、局限性与个人点评，并从芯片架构和 RTL 两个层面补充工程化分析。
 
 支持 PDF 与 DOCX。输出统一使用中文；无法从原文确认的信息会明确标记为推测、`TBD` 或不适用。
 
@@ -28,7 +28,7 @@ Read Paper 用于深度阅读单篇论文或对比多篇论文与技术文档。
 | 单篇深度分析 | 梳理研究动机、方法、创新点、实验、局限性与启发 |
 | 多篇横向对比 | 对比问题定义、技术路线、设计选择、实验条件与适用场景 |
 | 完整文档阅读 | 分批覆盖长文档，并检查公式、图表、表格、脚注和附录 |
-| 工程化三问 | 总结瓶颈、结构或训练方法，以及对芯片架构、RTL、验证的启发 |
+| 工程化三问 | 总结瓶颈、结构或训练方法，以及对芯片架构和 RTL 的启发 |
 | 证据边界 | 区分论文原始结论与工程推断，避免把缺失信息当作事实 |
 | 规范化交付 | 按文档标题重命名单篇原文，并将完整分析保存为 Markdown |
 
@@ -71,7 +71,7 @@ summary-<标题>.md
 - 研究动机、问题定义与核心方法
 - 实验结果、消融分析或证据论证
 - 局限性、未来方向与个人点评
-- 工程化三问：瓶颈、结构或训练方法、芯片架构/RTL/验证启发
+- 工程化三问：瓶颈、结构或训练方法、芯片架构/RTL 启发
 
 详细模板见 [`references/deep-analysis.md`](references/deep-analysis.md) 和 [`references/compare-papers.md`](references/compare-papers.md)。
 
@@ -81,7 +81,7 @@ summary-<标题>.md
 
 ## English
 
-Read Paper deeply analyzes a single paper or compares multiple academic papers and technical documents. It covers problem definition, core methods, experiments, limitations, and critical commentary, then adds an engineering-oriented analysis for chip architecture, RTL, and verification.
+Read Paper deeply analyzes a single paper or compares multiple academic papers and technical documents. It covers problem definition, core methods, experiments, limitations, and critical commentary, then adds an engineering-oriented analysis for chip architecture and RTL.
 
 The skill supports PDF and DOCX input and writes all reports in Chinese. Information that cannot be verified from the source is explicitly marked as inference, `TBD`, or not applicable.
 
@@ -92,7 +92,7 @@ The skill supports PDF and DOCX input and writes all reports in Chinese. Informa
 | Single-document analysis | Explain motivation, methods, contributions, experiments, limitations, and implications |
 | Multi-document comparison | Compare problem framing, technical approaches, design choices, experimental conditions, and use cases |
 | Complete document review | Read long documents in batches and inspect formulas, figures, tables, footnotes, and appendices |
-| Three engineering questions | Summarize the bottleneck, architecture or training method, and implications for chip architecture, RTL, and verification |
+| Three engineering questions | Summarize the bottleneck, architecture or training method, and implications for chip architecture and RTL |
 | Evidence boundaries | Separate claims supported by the paper from engineering inference |
 | Predictable delivery | Rename a single source from its document title and save the full analysis as Markdown |
 
@@ -135,6 +135,6 @@ If either destination already exists, the skill stops without overwriting files 
 - Motivation, problem definition, and core method
 - Experimental results, ablations, or supporting evidence
 - Limitations, future directions, and critical commentary
-- Three engineering questions: bottleneck, architecture or training method, and chip architecture/RTL/verification implications
+- Three engineering questions: bottleneck, architecture or training method, and chip architecture/RTL implications
 
 See [`references/deep-analysis.md`](references/deep-analysis.md) and [`references/compare-papers.md`](references/compare-papers.md) for the complete templates.
