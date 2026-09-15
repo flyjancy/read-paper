@@ -1,15 +1,15 @@
 ---
 name: read-paper
-description: "Read, deeply analyze, and compare academic papers or technical documents in PDF or DOCX format. In Pi, invoke via /skill:read-paper <path> for a single document, or /skill:read-paper 对比 <path1> <path2> ... to compare multiple documents. Produces structured Chinese Markdown reports plus an engineering summary covering bottlenecks, architecture or training methods, and implications for chip architecture and RTL; single-document analysis also renames the source and saves the report by title."
+description: "Read and deeply analyze an academic paper or technical document in PDF or DOCX format. Invoke via /skill:read-paper <path>. Produces a structured Chinese Markdown report plus an engineering summary covering bottlenecks, architecture or training methods, and implications for chip architecture and RTL; renames the source by title and saves the report beside it."
 ---
 
 # Read Paper
 
 学术论文与技术文档 PDF/DOCX 阅读分析工具。所有输出使用中文，采用结构化 Markdown。
 
-## 额外总结：每篇论文三问
+## 附加总结：工程化三问
 
-在原有的深度分析、实验、局限性和个人点评等内容之后，为每篇论文追加一个“工程化三问”总结。三问内容固定为：
+在深度分析、实验、局限性和个人点评之后，为论文追加一个“工程化三问”总结。三问内容固定为：
 
 1. **它解决了什么瓶颈？** 说明应用场景、核心瓶颈、现有方法为什么不足，以及论文用什么证据证明问题得到缓解。
 2. **用了什么结构或训练方法？** 说明模型/系统结构、关键模块、数据流，以及训练目标、损失函数、数据策略或优化方法。
@@ -19,15 +19,9 @@ description: "Read, deeply analyze, and compare academic papers or technical doc
 
 ## 命令
 
-### 单篇分析：`/skill:read-paper <pdf或docx路径>`
+`/skill:read-paper <pdf或docx路径>`
 
-深度分析单篇论文。读取 [references/deep-analysis.md](references/deep-analysis.md) 获取输出模板、阅读流程和文件命名规则。
-
-### 多篇对比：`/skill:read-paper 对比 <pdf或docx路径1> <pdf或docx路径2> ...`
-
-对比分析多篇论文。读取 [references/compare-papers.md](references/compare-papers.md) 获取输出模板和对比流程。
-
-多篇比较时，保留原有的总览、方法、实验和综合评价内容，并在每篇论文的分析中追加三问总结；最后可以围绕三问做横向对照。
+读取 [references/deep-analysis.md](references/deep-analysis.md) 获取输出模板、阅读流程和文件命名规则。
 
 ## 文档读取策略
 
@@ -60,10 +54,50 @@ PDF 每批最多读取 20 页；DOCX 按标题或章节分批读取。
 
 - 全部使用中文输出
 - 使用结构化 Markdown 格式
-- 论文术语首次出现时标注英文原文，如"注意力机制（Attention Mechanism）"
-- 每篇论文或文档必须在完整分析、局限性和个人点评之后追加三个问题，顺序固定为“瓶颈 → 结构或训练方法 → 芯片架构/RTL 启发”
+- 必须在完整分析、局限性和个人点评之后追加三个问题，顺序固定为“瓶颈 → 结构或训练方法 → 芯片架构/RTL 启发”
 - 三问总结应引用原分析中的实验数字、消融结果和作者局限，并说明它们是论文证据还是分析推断
 - 第三个问题必须明确区分芯片架构和 RTL 两个层次；论文没有直接覆盖的层次应标注推断边界
-- 单篇分析模式按单篇分析模板将完整报告写入原文所在目录，并在对话中返回重命名后的原文路径和报告路径
-- 多篇对比模式直接输出到对话中
+- 按模板将完整报告写入原文所在目录，并在对话中返回重命名后的原文路径和报告路径
 - 保持客观，避免把未经论文支持的硬件结论写成事实
+
+## 写作规范
+
+### 术语
+
+专有名词、技术术语、模型与方法名、机构与产品名**默认保留英文原文，不要自行翻译**。
+仅当该术语在中文技术文献中已有**明确、直观、通用**的对应说法时才使用中文；
+拿不准时保留英文，不要临时造译名。
+
+- 保留英文：`Transformer`、`Harness`、`KV Cache`、`ReAct`、`Rubric`、
+  `Roofline`、`Sidecar`、`Skill`、`MoE`、`SFT`、`RL`、`DPO`、`GRPO`、
+  `Pass@k`、`PIM`、`PNM`、`HBF`、`NVIDIA`、`Claude Code`
+- 使用中文：attention → 注意力，fine-tuning → 微调，embedding → 嵌入，
+  quantization → 量化，inference → 推理，latency → 延迟，bandwidth → 带宽，
+  throughput → 吞吐量，pipeline → 流水线，sparsity → 稀疏性
+
+缩写首次出现时给出英文全称，其后使用缩写，例如
+`High Bandwidth Flash（HBF）`、`Processing-Near-Memory（PNM）`。
+全称本身是专有名词时同样保留英文，不做中文转写。
+
+文档标题、会议与期刊名、出版社、产品名一律保留原文，不译。
+
+### 文风
+
+**简明易懂的学术风格。** 目标是让读者快速抓住结论与依据，而不是展示文采。
+
+- **结论先行**：先给判断，再给依据与限定条件。
+- **句子短、主语明确**：一句能说清的不写三句，避免多层嵌套。
+- **用具体证据代替形容**：写"在 X 基准上从 62% 升到 78%（论文 Table 3）"，
+  不写"效果显著提升"。
+- **控制术语密度**：连续堆叠专有名词时拆成短句。
+- 不使用"值得注意的是""不难看出""众所周知""综上所述"等填充语。
+- 不使用口语与夸张表达（"说白了""搞一下""颠覆性""革命性"）；
+  引用原文中出现这类表述时可以保留，但需标明是引用。
+
+反例：
+
+> 值得注意的是，该方法展现出了显著的性能提升，这为后续研究提供了重要启示。
+
+正例：
+
+> 该方法在长上下文场景下提升明显：在 X 基准上从 62% 升到 78%（论文 Table 3）。
