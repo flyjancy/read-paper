@@ -53,7 +53,7 @@ skill 根据正文标题规范化原文文件名，并在原目录保存报告�
 
 ```text
 <标题>.<pdf|docx>
-summary-<标题>.md
+<标题>-summary.md
 ```
 
 如果目标文件已经存在，skill 会停止操作，不覆盖文件，也不自动添加序号。
@@ -110,7 +110,7 @@ The skill normalizes the source filename from its title and writes the report be
 
 ```text
 <title>.<pdf|docx>
-summary-<title>.md
+<title>-summary.md
 ```
 
 If either destination already exists, the skill stops without overwriting files or adding a numeric suffix.
